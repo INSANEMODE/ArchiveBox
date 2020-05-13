@@ -54,7 +54,7 @@ RUN mkdir -p /data \
     && ln -s /home/pptruser/app/bin/* /bin/ \
     && ln -s /home/pptruser/app/bin/archivebox /bin/archive \
     && ln -s /usr/bin/python3 /usr/local/bin/python \
-    && chown -R pptruser:pptruser /home/pptruser/app/archivebox
+    && chown -R pptruser:pptruser /home/pptruser/app/archivebox \
     # && pip3 install -r /home/pptruser/app/archivebox/requirements.txt
     && pip3 install youtube-dl
 
