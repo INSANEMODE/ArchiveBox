@@ -1,5 +1,5 @@
 # This Dockerfile for ArchiveBox installs the following in a container:
-#     - curl, wget, python3, youtube-dl, google-chrome-unstable
+#     - curl, wget, python3, google-chrome-unstable
 #     - ArchiveBox
 # Usage:
 #     docker build github.com/pirate/ArchiveBox -t archivebox
@@ -15,7 +15,7 @@ LABEL maintainer="Nick Sweeting <archivebox-git@sweeting.me>"
 
 RUN apt-get update \
     && apt-get install -yq --no-install-recommends \
-        git wget curl youtube-dl gnupg2 libgconf-2-4 python3 python3-pip \
+        git wget curl gnupg2 libgconf-2-4 python3 python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install latest chrome package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others)
@@ -53,8 +53,10 @@ RUN mkdir -p /data \
     && ln -s /data /home/pptruser/app/archivebox/output \
     && ln -s /home/pptruser/app/bin/* /bin/ \
     && ln -s /home/pptruser/app/bin/archivebox /bin/archive \
+    && ln -s /usr/bin/python3 /usr/local/bin/python \
     && chown -R pptruser:pptruser /home/pptruser/app/archivebox
     # && pip3 install -r /home/pptruser/app/archivebox/requirements.txt
+    && pip3 install youtube-dl
 
 VOLUME /data
 
